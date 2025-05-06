@@ -24,10 +24,12 @@ const WeatherApp = () => {
 
   const [weatherIcon, setWeatherIcon] = useState(cloudIcon);
 
-  const apiKey = "66a5845a6fa997760bd55e5231787b0f";
+  const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+
 
   const fetchData = async (city) => {
     try {
+      
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();
